@@ -1,0 +1,13 @@
+API Design and REST Principles. A well-designed REST API uses resource-oriented URLs, correct HTTP verbs (GET, POST, PUT, PATCH, DELETE), and meaningful status codes. Idempotency matters: repeating a PUT or DELETE should not change the outcome beyond the first call. Pagination, filtering, and versioning (via URL path or headers) keep APIs usable as they grow. Errors should return structured, consistent payloads rather than raw stack traces.
+
+Databases and Persistence. Relational databases enforce ACID guarantees (Atomicity, Consistency, Isolation, Durability) which matter for financial or inventory systems. Indexes speed up reads but slow down writes and cost storage, so they should be added deliberately based on query patterns. Normalization reduces redundancy; denormalization can be a deliberate performance trade-off for read-heavy workloads. NoSQL databases trade some consistency guarantees for horizontal scalability and flexible schemas.
+
+Caching Strategies. Caching reduces latency and database load. Common patterns include cache-aside (application checks cache, falls back to DB, then populates cache), write-through (writes go to cache and DB together), and write-behind (writes go to cache first, DB updated asynchronously). Cache invalidation is famously hard -- TTLs, explicit invalidation on writes, and versioned cache keys are common mitigations.
+
+Microservices and System Design. Splitting a monolith into microservices trades operational complexity for independent deployability and scaling. Services should own their data and communicate over well-defined APIs or async messaging (e.g. Kafka, RabbitMQ) rather than sharing a database. Circuit breakers, retries with backoff, and timeouts prevent cascading failures when a downstream service is slow or down.
+
+Authentication and Authorization. Authentication verifies who a user is (e.g. via JWT, OAuth2, session cookies); authorization determines what they can do (RBAC, ABAC). Tokens should be short-lived with refresh mechanisms, and secrets must never be committed to source control -- environment variables or a secrets manager should hold them.
+
+Concurrency and Async I/O. Modern backend frameworks like FastAPI use async/await to handle many concurrent I/O-bound requests (DB calls, HTTP calls) on a small number of threads. CPU-bound work should be offloaded to worker processes or background job queues (e.g. Celery, RQ) so it doesn't block the event loop.
+
+Testing and Observability. Unit tests validate business logic in isolation; integration tests validate that components (DB, API, external services) work together. Structured logging, metrics, and distributed tracing are essential for debugging production issues in a system with multiple services.

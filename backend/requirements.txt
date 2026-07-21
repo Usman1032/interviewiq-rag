@@ -1,0 +1,16 @@
+fastapi==0.111.0
+uvicorn[standard]==0.30.1
+sqlalchemy==2.0.30
+python-multipart==0.0.9
+pypdf==4.2.0
+sentence-transformers==2.7.0
+chromadb==0.5.0
+anthropic==0.28.0
+python-dotenv==1.0.1
+pydantic==2.7.1
+pydantic-settings==2.2.1
+# Keep the scientific stack compatible.  Newer SciPy releases require NumPy 2.x,
+# while this application is validated with the NumPy 1.x wheels.
+numpy==1.26.4
+scipy==1.14.1
+scikit-learn==1.5.2

@@ -1,0 +1,13 @@
+Exploratory Data Analysis. Before modeling, understanding distributions, missing values, and correlations prevents wasted effort. Visualizations (histograms, box plots, scatter plots) and summary statistics reveal outliers and skew that affect model choice and preprocessing decisions like log-transforms or winsorization.
+
+Feature Engineering. Good features often matter more than model choice. Techniques include one-hot or target encoding for categoricals, binning continuous variables, interaction terms, and domain-specific aggregations (e.g. rolling averages for time series). Leakage -- accidentally including information that would not be available at prediction time -- is a common and costly mistake.
+
+Statistical Inference. Hypothesis testing (t-tests, chi-square tests) and confidence intervals quantify uncertainty in estimates drawn from samples. p-values indicate the probability of observing data this extreme under the null hypothesis, not the probability the null hypothesis is true -- a frequent source of misinterpretation. A/B testing applies these principles to compare product variants.
+
+Experiment Design. Randomization and proper control groups isolate causal effects from confounders. Sample size and power calculations determine whether an experiment can detect an effect of a given size before running it, avoiding underpowered studies that waste time and traffic.
+
+Time Series Analysis. Time series data has autocorrelation and often trend/seasonality components. Classical models (ARIMA, exponential smoothing) decompose these components explicitly; modern approaches may use gradient-boosted trees with lag features or sequence models. Stationarity (constant mean/variance over time) is often a prerequisite for classical methods.
+
+Model Interpretability. Feature importance (e.g. from tree-based models), SHAP values, and partial dependence plots help explain what drives a model's predictions -- important for stakeholder trust and for catching spurious correlations before deployment.
+
+Data Pipelines and Reproducibility. Reproducible analysis depends on versioned data, versioned code, and pinned dependencies. Pipeline orchestration tools (e.g. Airflow, Dagster) schedule and monitor multi-step data workflows, handling retries and dependency ordering between tasks.
