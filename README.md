@@ -26,6 +26,7 @@ backend/   FastAPI service
 ## Demo Video
 
 [Video demo] = https://drive.google.com/file/d/1WXbFnHGZ6qJ7kPkAeRsmmU3L1IOn0uCR/view?usp=sharing
+
 ### Data flow
 
 ```
@@ -89,17 +90,19 @@ Submit answer → store answer → cheap heuristic scores answer strength
 
 ```bash
 cd backend
-python -m venv venv && source venv/bin/activate   # Windows: venv\Scripts\activate
+rm -rf venv
+python3 -m venv venv
+source venv/bin/activate
+   # Windows: venv\Scripts\activate
+pip install --upgrade pip
 pip install -r requirements.txt
+python scripts/ingest_knowledge_base.py
 
 cp .env.example .env
 # edit .env and add ANTHROPIC_API_KEY if you have one
 
 # Build the vector store from the sample knowledge base
 python scripts/ingest_knowledge_base.py
-
-uvicorn app.main:app --reload --port 8000
-```
 
 The API is now live at `http://localhost:8000` (interactive docs at
 `/docs`).
