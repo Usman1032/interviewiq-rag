@@ -23,7 +23,9 @@ backend/   FastAPI service
                     included; swap in the full textbooks from the
                     assignment brief for production use)
 ```
+## Demo Video
 
+[Video demo] = https://drive.google.com/file/d/1WXbFnHGZ6qJ7kPkAeRsmmU3L1IOn0uCR/view?usp=sharing
 ### Data flow
 
 ```
